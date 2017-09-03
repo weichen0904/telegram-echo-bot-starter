@@ -16,13 +16,14 @@ app.listen(PORT, function () {
 // handler receiving messages
 app.post('/', function (req, res) {
     console.log(JSON.stringify(req.body,null,2));
-    res.send();
-    let chatId= req.body.messge.chat.id;
+
+    let chatId= req.body.message.chat.id;
     let text=req.body.message.text;
     if (text) {
-sendMessage(chatId,text);
+        sendMessage(chatId,text);
 
     }
+    res.send();
 })
 
 // https://core.telegram.org/bots/api#sendmessage
