@@ -4,7 +4,7 @@ let request = require('request')
 let app = express()
 
 // https://core.telegram.org/bots#6-botfather
-const TOKEN = 'Your_Token'
+const TOKEN = '412543182:AAEf0m9zBnWeonqhLIKunlIS1QsYnusc8SM'
 const PORT = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -15,6 +15,14 @@ app.listen(PORT, function () {
 
 // handler receiving messages
 app.post('/', function (req, res) {
+    console.log(JSON.stringify(req.body,null,2));
+    res.send();
+    let chatId= req.body.messge.chat.id;
+    let text=req.body.message.text;
+    if (text) {
+sendMessage(chatId,text);
+
+    }
 })
 
 // https://core.telegram.org/bots/api#sendmessage
